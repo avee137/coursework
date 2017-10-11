@@ -1,0 +1,44 @@
+mydump:
+-------
+1. This is a primitive implementation of a packet sniffer based on pcap library.
+   It captures packets an prints output in following format - 
+
+2016-02-16 13:14:33.224487 01:00:5E:7F:FF:7F -> C4:3D:C7:17:6F:17 type 0x800 len 92
+10.0.0.1:137 -> 10.0.0.255:137 UDP
+EB 71 01 10 00 01 00 00 00 00 00 00 20 45 42 45  .q.......... EBE
+4A 45 42 46 44 43 41 43 41 43 41 43 41 43 41 43  JEBFDCACACACACAC
+41 43 41 43 41 43 41 43 41 43 41 41 41 00 00 20  ACACACACACAAA..
+00 01 
+
+2. Usage :
+	2.1 Compilation : Makefile is provided. 'make' creates 'mydump'. 'make clean' removes old 'mydump'.
+	2.2 Needs root permission to run.
+	2.3 program accepts following input args -
+		-i <interface> : hardware interface for live packet capture
+		-r <input_file> : captured pcap file for offline analysis
+		-s <search_string> : optional arguement, only packets with payload containing the string
+				     are dumped
+		<expression> : optional argument, any valid expression following BPF syntax	
+
+		-i and -r are mutually exclusive
+
+		Example usage: 
+		mydump -i eth0
+		mydump -r sample.pcap	
+		mydump -i eth0 udp # dumps only udp packet, udp is BPF filter
+		mydump -i eth0 -s google tcp # dumps only tcp packets, tcp is BPF filter, google is search string
+
+3. Implementation :
+	This program builds on top of the fundamental implementation provided at the tcpdump site [reference].
+
+	pcap_lookupnet()- lookup for the interface supplied in arguement 
+	pcap_open_live() - used to open and capture packets from live interface
+	pcap_open_offline()- used to open and read previously captured pcap file
+	pcap_loop() - API to capture the packets 
+	got_packet() - callback supplied to pcap_loop to handle packets. In our case, it prints various packet
+			information based on requirement provided in hw2.txt
+	print_payload() and print_hex_ascii_line()- parse the payload and print data in rows of 16 bytes:offset hex ascii
+
+4. references:
+	http://www.tcpdump.org/pcap.html
+	

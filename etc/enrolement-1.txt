@@ -1,0 +1,41 @@
+Core Area: Theory
+CSE 548: Analysis of Algorithms
+CSE 540: Theory of Computation
+CSE 541: Logic in Computer Science
+CSE 547: Discrete Mathematics
+
+Core Area: Software
+CSE 504: Compiler Design
+CSE 526: Principles Programming Languages
+CSE 532: Theory of Database Systems
+CSE 537: Artificial Intelligence
+
+Core Area: Systems
+CSE 502:Computer Architecture
+CSE 506:Operating Systems
+CSE 534:Fundamentals of Computer Networks
+CSE 528:Computer Graphics
+
+
+Elective Area:
+CSE 527 Introduction to Computer Vision
+CSE 505 Computing with Logic
+CSE 535 Asynchronous Systems
+CSE 508 Network Security
+CSE 509 Computer System Security
+CSE 549 Computational Biology
+CSE 564 Visualization
+CSE 512 Machine Learning
+
+
+To be enrolled for 3 sems -
+
+CSE 548: Analysis of Algorithms
+CSE 537: Artificial Intelligence
+CSE 502:Computer Architecture
+CSE 506:Operating Systems
+
+CSE 535 Asynchronous Systems
+CSE 508 Network Security
+CSE 509 Computer System Security
+CSE 512 Machine Learning 

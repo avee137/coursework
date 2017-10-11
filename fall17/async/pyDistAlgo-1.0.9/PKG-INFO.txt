@@ -1,0 +1,17 @@
+Metadata-Version: 1.1
+Name: pyDistAlgo
+Version: 1.0.9
+Summary: A high-level language for distributed algorithms.
+Home-page: https://github.com/DistAlgo/distalgo
+Author: bolin
+Author-email: bolin@cs.stonybrook.edu
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Software Development :: Compilers

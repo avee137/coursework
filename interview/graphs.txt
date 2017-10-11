@@ -1,0 +1,59 @@
+- mostly problems related with network, grids, can have terms liike connectivity, edge, path, shortedt route etc.
+- directed : can move in one direction, undirected: can move in btoh directions, nodes and edges are two key components.
+- strongly connected - if in a directed graph , for any twi nodes (u, v), there is a pth from u to v and vice versa,
+  ie. v to u	
+- order of a graph : no. of nodes in a graph, size: no. of edges in a graph
+- cost function of a graph : *direct cost* for moving from A to B node 
+	-- for a graph A->B->C : there is a cost function for A->B but not A->C as we cant move directly from A to C
+- graph can be represented by many data structures :
+		-- linked list - linera graph
+		-- tree - must be acyclic, 
+		** it is very important to chose correct right data structure based on a problem definition
+		   as a general graph can not be fit into a special type of graph like linked list or tree.
+- general representaion of graph
+
+	-- structure Node {
+				list_of_nodes[] neighbors;
+				data;
+			  }
+	-- cost (x,y) = if (x.neighbours has y) then return x.neighbours[y];
+			else not possible
+	-- list of nodes in structure node is also called adjacency list
+	-- adjacency matrix is a 2 D array in which values at arr[i][j] is number of edges from i to j 
+
+- basic Searches on graph :
+	-- DFS using stack :
+		-in CPP using template class stack
+		 #include <stack>
+		 std::stack <int> myStack;
+		- four basic operations : top, push, pop, empty
+		- mostly used for any possbile solution to a problem, not necessarily the shortest path
+
+	--BFS using Queue :
+		- in CPP using templaate class queue
+		#include <queue>
+		std::queue <int> myqueue;
+		
+		- four basic operations - enqueu , deque, empty, front
+		- in case of an unweighted graph (where each edge has same cost), the first time its visited usigng BFS is 
+		  the shortest path to it. But we need to make sure that we do not visit the node twice. Hence once we enque 
+		  all the **unvisited** neighbours to a q we mark them all visited !! then we keep on dequing from front and 
+		  processing the neighbors.
+ 		- !!!we must always enqueue the unvisited nodes!!!
+		
+	-- shortest path :
+		- Dikstra (Heap method)
+			-- BFS using a priority queue
+			-- CPP has a priority q in template 
+			
+				#include <queue>
+				
+				std::priority_queue !!! one caution is that it returns the MAX element from the q , not the MIN !!!
+
+			*** some solutions or algos require more than one DS at one time like prims algo needs both map
+			    and binary heap
+			*** it is very very important to solve and outline the problem on paper before starting to code
+
+		- Floyd
+		
+		

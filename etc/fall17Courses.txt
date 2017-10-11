@@ -1,0 +1,37 @@
+FALL 17 courses:
+______________________________________________________________________
+
+CSE505 	Computing with Logic
+CSE506 	Operating Systems
+CSE508 	Network Security
+							CSE519 	Data Science Fundamentals
+							CSE525 	Introduction to Robotics
+							CSE527 	Introduction to Computer Vision
+							CSE528 	Computer Graphics
+CSE532 	Theory of Database Systems
+CSE533 	Network Programming
+CSE535 	Asynchronous Systems
+CSE537 	Artificial Intelligence
+CSE540 	Theory of computation
+							CSE545 	Big Data Analytics
+CSE548 	Analysis of Algorithms
+CSE549 	Computational Biology
+CSE570 	Wireless and Mobile Networks
+CSE504 	Compiler Design
+CSE547 	Discrete Mathematics
+
+************ enrolled
+CSE508 	Network Security
+CSE535 	Asynchronous Systems
+*CSE537 	Artificial Intelligence
+*CSE506 	Operating Systems
+CSE532 	Theory of Database Systems
+
+******try to drop DB and take 
+discrete maths
+comp bio
+theory of comp
+
+****out of OS and AI
+pick AI
+
