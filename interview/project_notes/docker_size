@@ -1,0 +1,34 @@
+logstash
+nginx
+asr
+corenlp
+memcache
+elasticsearch
+mysql
+
+
+
+web
+losgsatsh
+corenlp
+elasticsearch
+asr
+********************************************************************************************
+avinash.kumar@ghats [ ~ ]$ docker images web
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+web                 latest              3c7ce57abc6a        4 hours ago         4.53GB
+avinash.kumar@ghats [ ~ ]$ docker images logstash
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+logstash            latest              b62682968161        13 days ago         881MB
+avinash.kumar@ghats [ ~ ]$ docker images corenlp
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+corenlp             latest              9fa2be857e79        7 days ago          1.66GB
+avinash.kumar@ghats [ ~ ]$ docker images elasticsearch
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+elasticsearch       latest              0237aa319912        2 weeks ago         747MB
+avinash.kumar@ghats [ ~ ]$ 
+avinash.kumar@ghats [ lucida-clinc ]$ docker images asr
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+asr                 latest              acb990cafdc0        3 days ago          657MB
+avinash.kumar@ghats [ lucida-clinc ]$ 
+***********************************************************************************************

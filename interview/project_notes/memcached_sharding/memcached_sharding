@@ -1,0 +1,28 @@
+1. django has a way to configure multiple caches
+https://docs.djangoproject.com/en/2.0/topics/cache/
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': [
+            '172.19.26.240:11211',
+            '172.19.26.242:11211',
+        ]
+    }
+}
+
+
+running memcached !
+
+/usr/bin/memcached -m 64 -p 11211 -u memcache -l 127.0.0.1 -S -vv
+
+
+
+client used currently -  python-memcached==1.58
+
+installed in -  web/.Dockerbase 
+
+client modules :
+ * https://pypi.org/project/consistent_hash/ [USING currently for sharding]
+ https://pypi.org/project/hash_ring/
+

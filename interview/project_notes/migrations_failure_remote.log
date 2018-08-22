@@ -1,0 +1,792 @@
+[0KRunning with gitlab-ci-multi-runner 9.5.1 (96b34cc)
+  on verwall-shell (4647ee2f)
+[0;m[0KUsing Shell executor...
+[0;mRunning on verwall...
+[32;1mSkipping Git repository setup[0;m
+[32;1mSkippping Git checkout[0;m
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ uptime[0;m
+ 12:16:39 up 30 days, 16:42,  0 users,  load average: 1.37, 1.49, 1.65
+[32;1m$ RUNNER_WORK_DIR=$HOME/lucida-clinc[0;m
+[32;1m$ echo "Working in $RUNNER_WORK_DIR"[0;m
+Working in /home/gitlab-runner/lucida-clinc
+[32;1m$ mkdir -p $RUNNER_WORK_DIR[0;m
+[32;1m$ cd $RUNNER_WORK_DIR[0;m
+[32;1m$ if ! git rev-parse 2> /dev/null; then ssh-keyscan zeus.clinc.ai >> $HOME/.ssh/known_hosts; ssh-keyscan gitlab.clinc.ai >> $HOME/.ssh/known_hosts; git init; git fetch $CLONE_SLUG master; git reset --hard FETCH_HEAD; fi[0;m
+[32;1m$ git lfs install[0;m
+Updated git hooks.
+Git LFS initialized.
+[32;1m$ git config lfs.url "$CLONE_SLUG/info/lfs"[0;m
+[32;1m$ git fetch $CLONE_SLUG --tags --quiet[0;m
+[32;1m$ git fetch $CLONE_SLUG master[0;m
+From https://gitlab.clinc.ai/clinc/lucida-clinc
+ * branch            master     -> FETCH_HEAD
+[32;1m$ git fetch $CLONE_SLUG $CI_COMMIT_REF_NAME[0;m
+From https://gitlab.clinc.ai/clinc/lucida-clinc
+ * branch            migration_testing_pipeline -> FETCH_HEAD
+[32;1m$ git reset --hard FETCH_HEAD[0;m
+HEAD is now at 645709e [improvement][clinc: infra] Add migration testing pipeline for commits with added migrations
+[32;1m$ git clean -xdf[0;m
+Removing .container.env
+Removing .credentials.env
+Removing .env
+Removing .lucida-version.txt
+[32;1m$ git checkout $CI_COMMIT_SHA[0;m
+HEAD is now at 645709e... [improvement][clinc: infra] Add migration testing pipeline for commits with added migrations 			    [to be removed before merge] dummy migrations for test
+[32;1m$ python ./scripts/continuous_integration/ci_utilities.py --branch $CI_COMMIT_REF_NAME[0;m
+[32;1m$ ./scripts/continuous_integration/ci_filter.sh "$CLONE_SLUG" "$CI_COMMIT_REF_NAME" migrations[0;m
+From https://gitlab.clinc.ai/clinc/lucida-clinc
+ * branch            master     -> FETCH_HEAD
+./scripts/continuous_integration/test_migrations.sh
+working in RUNNER_WORK_DIR: /home/gitlab-runner/lucida-clinc
+Running migrations on LCA branch
+NEW_MIGRATIONS: clincapi/finie/migrations/0058_auto_20180618_1536.py
+'clincapi/finie/migrations/0058_auto_20180618_1536.py' -> './tmp/migrations/0058_auto_20180618_1536.py'
+'./clincapi/finie/fixtures/account_name_extractor_test_fixture.json' -> './tmp/fixtures/account_name_extractor_test_fixture.json'
+'./clincapi/finie/fixtures/ai_models' -> './tmp/fixtures/ai_models'
+'./clincapi/finie/fixtures/ai_models/classifier_models.json' -> './tmp/fixtures/ai_models/classifier_models.json'
+'./clincapi/finie/fixtures/ai_models/svp_models.json' -> './tmp/fixtures/ai_models/svp_models.json'
+'./clincapi/finie/fixtures/ai_models/parser_models.json' -> './tmp/fixtures/ai_models/parser_models.json'
+'./clincapi/finie/fixtures/ai_models/categorytree_models.json' -> './tmp/fixtures/ai_models/categorytree_models.json'
+'./clincapi/finie/fixtures/ai_version.json' -> './tmp/fixtures/ai_version.json'
+'./clincapi/finie/fixtures/alexa.json' -> './tmp/fixtures/alexa.json'
+'./clincapi/finie/fixtures/alexa_language_strings.json' -> './tmp/fixtures/alexa_language_strings.json'
+'./clincapi/finie/fixtures/atb_user.json' -> './tmp/fixtures/atb_user.json'
+'./clincapi/finie/fixtures/bankjoy_user.json' -> './tmp/fixtures/bankjoy_user.json'
+'./clincapi/finie/fixtures/barclays_user.json' -> './tmp/fixtures/barclays_user.json'
+'./clincapi/finie/fixtures/bettr_user.json' -> './tmp/fixtures/bettr_user.json'
+'./clincapi/finie/fixtures/bofa_user.json' -> './tmp/fixtures/bofa_user.json'
+'./clincapi/finie/fixtures/capgemini_user.json' -> './tmp/fixtures/capgemini_user.json'
+'./clincapi/finie/fixtures/catmodeluser.json' -> './tmp/fixtures/catmodeluser.json'
+'./clincapi/finie/fixtures/cibc_9901_user.json' -> './tmp/fixtures/cibc_9901_user.json'
+'./clincapi/finie/fixtures/cibc_9902_user.json' -> './tmp/fixtures/cibc_9902_user.json'
+'./clincapi/finie/fixtures/cibc_9903_user.json' -> './tmp/fixtures/cibc_9903_user.json'
+'./clincapi/finie/fixtures/cibc_9904_user.json' -> './tmp/fixtures/cibc_9904_user.json'
+'./clincapi/finie/fixtures/cibc_9905_user.json' -> './tmp/fixtures/cibc_9905_user.json'
+'./clincapi/finie/fixtures/cibc_9906_user.json' -> './tmp/fixtures/cibc_9906_user.json'
+'./clincapi/finie/fixtures/cibc_9907_user.json' -> './tmp/fixtures/cibc_9907_user.json'
+'./clincapi/finie/fixtures/cibc_9908_user.json' -> './tmp/fixtures/cibc_9908_user.json'
+'./clincapi/finie/fixtures/cibc_9909_user.json' -> './tmp/fixtures/cibc_9909_user.json'
+'./clincapi/finie/fixtures/cibc_9910_user.json' -> './tmp/fixtures/cibc_9910_user.json'
+'./clincapi/finie/fixtures/cibc_9911_user.json' -> './tmp/fixtures/cibc_9911_user.json'
+'./clincapi/finie/fixtures/cibc_9912_user.json' -> './tmp/fixtures/cibc_9912_user.json'
+'./clincapi/finie/fixtures/cibc_9914_user.json' -> './tmp/fixtures/cibc_9914_user.json'
+'./clincapi/finie/fixtures/cibc_user.json' -> './tmp/fixtures/cibc_user.json'
+'./clincapi/finie/fixtures/clientapps_user.json' -> './tmp/fixtures/clientapps_user.json'
+'./clincapi/finie/fixtures/clinc_investments_three_stocks_user.json' -> './tmp/fixtures/clinc_investments_three_stocks_user.json'
+'./clincapi/finie/fixtures/clincuser.json' -> './tmp/fixtures/clincuser.json'
+'./clincapi/finie/fixtures/competency.json' -> './tmp/fixtures/competency.json'
+'./clincapi/finie/fixtures/device.json' -> './tmp/fixtures/device.json'
+'./clincapi/finie/fixtures/device_mapping.json' -> './tmp/fixtures/device_mapping.json'
+'./clincapi/finie/fixtures/enacomm_user.json' -> './tmp/fixtures/enacomm_user.json'
+'./clincapi/finie/fixtures/fis_user.json' -> './tmp/fixtures/fis_user.json'
+'./clincapi/finie/fixtures/ford_user.json' -> './tmp/fixtures/ford_user.json'
+'./clincapi/finie/fixtures/get_accounts_test_fixture.json' -> './tmp/fixtures/get_accounts_test_fixture.json'
+'./clincapi/finie/fixtures/google_home.json' -> './tmp/fixtures/google_home.json'
+'./clincapi/finie/fixtures/google_language_strings.json' -> './tmp/fixtures/google_language_strings.json'
+'./clincapi/finie/fixtures/hbr_user.json' -> './tmp/fixtures/hbr_user.json'
+'./clincapi/finie/fixtures/institution.json' -> './tmp/fixtures/institution.json'
+'./clincapi/finie/fixtures/intuit_user.json' -> './tmp/fixtures/intuit_user.json'
+'./clincapi/finie/fixtures/isbank_user.json' -> './tmp/fixtures/isbank_user.json'
+'./clincapi/finie/fixtures/nbc_user.json' -> './tmp/fixtures/nbc_user.json'
+'./clincapi/finie/fixtures/ncr_user.json' -> './tmp/fixtures/ncr_user.json'
+'./clincapi/finie/fixtures/plaiduser.json' -> './tmp/fixtures/plaiduser.json'
+'./clincapi/finie/fixtures/redirect_uri.json' -> './tmp/fixtures/redirect_uri.json'
+'./clincapi/finie/fixtures/response_category.json' -> './tmp/fixtures/response_category.json'
+'./clincapi/finie/fixtures/response_category_set.json' -> './tmp/fixtures/response_category_set.json'
+'./clincapi/finie/fixtures/response_personality.json' -> './tmp/fixtures/response_personality.json'
+'./clincapi/finie/fixtures/response_slot.json' -> './tmp/fixtures/response_slot.json'
+'./clincapi/finie/fixtures/response_template_atb_default.json' -> './tmp/fixtures/response_template_atb_default.json'
+'./clincapi/finie/fixtures/response_template_bankjoy_coke_alexa.json' -> './tmp/fixtures/response_template_bankjoy_coke_alexa.json'
+'./clincapi/finie/fixtures/response_template_bankjoy_gah_alexa.json' -> './tmp/fixtures/response_template_bankjoy_gah_alexa.json'
+'./clincapi/finie/fixtures/response_template_barclays_default.json' -> './tmp/fixtures/response_template_barclays_default.json'
+'./clincapi/finie/fixtures/response_template_barclays_default_launchpad.json' -> './tmp/fixtures/response_template_barclays_default_launchpad.json'
+'./clincapi/finie/fixtures/response_template_barclays_messenger.json' -> './tmp/fixtures/response_template_barclays_messenger.json'
+'./clincapi/finie/fixtures/response_template_bettr_default.json' -> './tmp/fixtures/response_template_bettr_default.json'
+'./clincapi/finie/fixtures/response_template_bofa_default.json' -> './tmp/fixtures/response_template_bofa_default.json'
+'./clincapi/finie/fixtures/response_template_capgemini_default.json' -> './tmp/fixtures/response_template_capgemini_default.json'
+'./clincapi/finie/fixtures/response_template_cibc_default.json' -> './tmp/fixtures/response_template_cibc_default.json'
+'./clincapi/finie/fixtures/response_template_clinc_default_clean.json' -> './tmp/fixtures/response_template_clinc_default_clean.json'
+'./clincapi/finie/fixtures/response_template_clinc_default.json' -> './tmp/fixtures/response_template_clinc_default.json'
+'./clincapi/finie/fixtures/response_template_clinc_ios.json' -> './tmp/fixtures/response_template_clinc_ios.json'
+'./clincapi/finie/fixtures/response_template_clinc_smart_speaker.json' -> './tmp/fixtures/response_template_clinc_smart_speaker.json'
+'./clincapi/finie/fixtures/response_template_enacomm_default.json' -> './tmp/fixtures/response_template_enacomm_default.json'
+'./clincapi/finie/fixtures/response_template_fis_default.json' -> './tmp/fixtures/response_template_fis_default.json'
+'./clincapi/finie/fixtures/response_template_ford_default.json' -> './tmp/fixtures/response_template_ford_default.json'
+'./clincapi/finie/fixtures/response_template_hbr_default.json' -> './tmp/fixtures/response_template_hbr_default.json'
+'./clincapi/finie/fixtures/response_template_intuit_default.json' -> './tmp/fixtures/response_template_intuit_default.json'
+'./clincapi/finie/fixtures/response_template_isbank_default.json' -> './tmp/fixtures/response_template_isbank_default.json'
+'./clincapi/finie/fixtures/response_template_isbank_ios.json' -> './tmp/fixtures/response_template_isbank_ios.json'
+'./clincapi/finie/fixtures/response_template_nbc_alexa.json' -> './tmp/fixtures/response_template_nbc_alexa.json'
+'./clincapi/finie/fixtures/response_template_nbc_default.json' -> './tmp/fixtures/response_template_nbc_default.json'
+'./clincapi/finie/fixtures/response_template_ncr_alexa.json' -> './tmp/fixtures/response_template_ncr_alexa.json'
+'./clincapi/finie/fixtures/response_template_ncr_default.json' -> './tmp/fixtures/response_template_ncr_default.json'
+'./clincapi/finie/fixtures/response_template_schwab_default.json' -> './tmp/fixtures/response_template_schwab_default.json'
+'./clincapi/finie/fixtures/response_template_spglobal_default.json' -> './tmp/fixtures/response_template_spglobal_default.json'
+'./clincapi/finie/fixtures/response_template_synchrony_default.json' -> './tmp/fixtures/response_template_synchrony_default.json'
+'./clincapi/finie/fixtures/response_template_tcs_default.json' -> './tmp/fixtures/response_template_tcs_default.json'
+'./clincapi/finie/fixtures/response_template_tradestation_ios.json' -> './tmp/fixtures/response_template_tradestation_ios.json'
+'./clincapi/finie/fixtures/response_template_usaa_alice_default.json' -> './tmp/fixtures/response_template_usaa_alice_default.json'
+'./clincapi/finie/fixtures/response_template_usaaalphago_default.json' -> './tmp/fixtures/response_template_usaaalphago_default.json'
+'./clincapi/finie/fixtures/response_template_usaaalphago_messenger.json' -> './tmp/fixtures/response_template_usaaalphago_messenger.json'
+'./clincapi/finie/fixtures/response_template_usaabrowser_default.json' -> './tmp/fixtures/response_template_usaabrowser_default.json'
+'./clincapi/finie/fixtures/response_template_usaacui_alexa.json' -> './tmp/fixtures/response_template_usaacui_alexa.json'
+'./clincapi/finie/fixtures/response_template_usaacui_default.json' -> './tmp/fixtures/response_template_usaacui_default.json'
+'./clincapi/finie/fixtures/response_template_usaaga_default.json' -> './tmp/fixtures/response_template_usaaga_default.json'
+'./clincapi/finie/fixtures/response_template_usaa_microbot_default_clean.json' -> './tmp/fixtures/response_template_usaa_microbot_default_clean.json'
+'./clincapi/finie/fixtures/response_template_usbank_default.json' -> './tmp/fixtures/response_template_usbank_default.json'
+'./clincapi/finie/fixtures/response_template_wellsfargo_default.json' -> './tmp/fixtures/response_template_wellsfargo_default.json'
+'./clincapi/finie/fixtures/schwab_user.json' -> './tmp/fixtures/schwab_user.json'
+'./clincapi/finie/fixtures/scripts' -> './tmp/fixtures/scripts'
+'./clincapi/finie/fixtures/scripts/finie_device_mapping_0047.py' -> './tmp/fixtures/scripts/finie_device_mapping_0047.py'
+'./clincapi/finie/fixtures/scripts/version_response_categories_0036.py' -> './tmp/fixtures/scripts/version_response_categories_0036.py'
+'./clincapi/finie/fixtures/spglobal_user.json' -> './tmp/fixtures/spglobal_user.json'
+'./clincapi/finie/fixtures/synchrony_user.json' -> './tmp/fixtures/synchrony_user.json'
+'./clincapi/finie/fixtures/tcs_user.json' -> './tmp/fixtures/tcs_user.json'
+'./clincapi/finie/fixtures/test_competency.json' -> './tmp/fixtures/test_competency.json'
+'./clincapi/finie/fixtures/testuser.json' -> './tmp/fixtures/testuser.json'
+'./clincapi/finie/fixtures/tradestation_user.json' -> './tmp/fixtures/tradestation_user.json'
+'./clincapi/finie/fixtures/usaa_alice_user.json' -> './tmp/fixtures/usaa_alice_user.json'
+'./clincapi/finie/fixtures/usaa_microbot_user.json' -> './tmp/fixtures/usaa_microbot_user.json'
+'./clincapi/finie/fixtures/usaauser.json' -> './tmp/fixtures/usaauser.json'
+'./clincapi/finie/fixtures/usbank_user.json' -> './tmp/fixtures/usbank_user.json'
+'./clincapi/finie/fixtures/wellsfargo_user.json' -> './tmp/fixtures/wellsfargo_user.json'
+./drm/build_credentials.sh clinc
+clinc credentials. Including all institution credentials.
+./scripts/create_docker_compose_env.sh
+./scripts/create_container_env.sh
+./scripts/versioning/gen_version.sh
+./scripts/build_one_docker.sh ./uservices/logstash/Dockerfile dev || exit 1; ./scripts/build_one_docker.sh ./uservices/Dockerfile dev || exit 1; ./scripts/build_one_docker.sh ./uservices/elasticsearch/Dockerfile dev || exit 1; ./scripts/build_one_docker.sh ./uservices/nginx/Dockerfile dev || exit 1; ./scripts/build_one_docker.sh ./templates/python/business-logic/Dockerfile dev || exit 1; ./scripts/build_one_docker.sh ./aiutils/corenlp/Dockerfile dev || exit 1; ./scripts/build_one_docker.sh ./storage/mysql/Dockerfile dev || exit 1; ./scripts/build_one_docker.sh ./web/Dockerfile dev || exit 1; ./scripts/build_one_docker.sh ./bankutils/bankapi/plaid/memcache/Dockerfile dev || exit 1;
+062218113424724597237: Pulling from logstash-base
+Digest: sha256:8a9b3afb3aa97db10315db6c799f2e9660720b0c4d4c3e9a9939852c92071b6a
+Status: Image is up to date for cdn.clinc.ai:5000/logstash-base:062218113424724597237
+Sending build context to Docker daemon 16.38 kB
+Step 1/9 : FROM cdn.clinc.ai:5000/logstash-base:062218113424724597237
+ ---> b036074d10bd
+Step 2/9 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> a863a8fea955
+Step 3/9 : COPY logstash-init /etc/init.d/logstash
+ ---> Using cache
+ ---> 9c7b4137be88
+Step 4/9 : RUN sed -i -e 's#^LS_HOME=$#LS_HOME='$LOGSTASH_HOME'#' /etc/init.d/logstash  && chmod +x /etc/init.d/logstash
+ ---> Using cache
+ ---> 5c514ffbac01
+Step 5/9 : COPY logstash-2-4-0.conf /etc/logstash/conf.d/logstash-2-4-0.conf
+ ---> Using cache
+ ---> 4bd0a887c2c2
+Step 6/9 : COPY start-logstash.sh /usr/local/bin/start-logstash.sh
+ ---> Using cache
+ ---> 55c8efe8acf6
+Step 7/9 : RUN chmod +x /usr/local/bin/start-logstash.sh
+ ---> Using cache
+ ---> e0ea296f2f4a
+Step 8/9 : EXPOSE 5984
+ ---> Using cache
+ ---> 7732271da36d
+Step 9/9 : CMD /usr/local/bin/start-logstash.sh
+ ---> Using cache
+ ---> 451eca789c8e
+Successfully built 451eca789c8e
+062218113424724597237: Pulling from uservices-base
+Digest: sha256:d9c0ea9b96748fe147d4d8089614ca04ae86c314203671f56a42f0ab1b03209a
+Status: Image is up to date for cdn.clinc.ai:5000/uservices-base:062218113424724597237
+Sending build context to Docker daemon 218.8 MB
+Step 1/27 : FROM cdn.clinc.ai:5000/uservices-base:062218113424724597237
+ ---> 524c75b12007
+Step 2/27 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> 299f4ec92d32
+Step 3/27 : ENV PYTHONUNBUFFERED 1
+ ---> Using cache
+ ---> c8db1431cad2
+Step 4/27 : ENV GOOGLE_APPLICATION_CREDENTIALS /usr/local/lucida-clinc/uservices/asr/googlecloudspeech/credentials.json
+ ---> Using cache
+ ---> 1be331b67c55
+Step 5/27 : ENV USE_MEMCACHED 1
+ ---> Using cache
+ ---> ff1ee78835d4
+Step 6/27 : ENV CLINC_LOG_PATH /var/log/lucida
+ ---> Using cache
+ ---> 5806487ccfcf
+Step 7/27 : RUN mkdir -p /var/log/lucida/files/asr
+ ---> Using cache
+ ---> 253ad5df7052
+Step 8/27 : ENV DJANGO_SETTINGS_MODULE clincapi.common.settings
+ ---> Using cache
+ ---> f51edaf0af74
+Step 9/27 : RUN mkdir -p /usr/local/lucida-clinc
+ ---> Using cache
+ ---> 297fc11f7363
+Step 10/27 : WORKDIR /usr/local/lucida-clinc
+ ---> Using cache
+ ---> bd9147e3652b
+Step 11/27 : ENV CLINC_PATH /usr/local/lucida-clinc
+ ---> Using cache
+ ---> 919c3f7f597a
+Step 12/27 : ENV PYTHONPATH $PYTHONPATH:$CLINC_PATH:$CLINC_PATH/uservices
+ ---> Using cache
+ ---> f3456e35da48
+Step 13/27 : COPY external /usr/local/lucida-clinc/external
+ ---> Using cache
+ ---> c25621203456
+Step 14/27 : COPY aiutils /usr/local/lucida-clinc/aiutils
+ ---> Using cache
+ ---> e43fcb897044
+Step 15/27 : COPY Makefile Makefile.common .docker-base-version.txt .theanorc .lucida-version.txt .jshintrc .eslintrc.json .coveragerc .pylintrc /usr/local/lucida-clinc/
+ ---> Using cache
+ ---> 7b82b73af53d
+Step 16/27 : COPY commons /usr/local/lucida-clinc/commons
+ ---> Using cache
+ ---> fdf7d5c91c39
+Step 17/27 : COPY drm /usr/local/lucida-clinc/drm
+ ---> Using cache
+ ---> eab16ae7e2cb
+Step 18/27 : COPY mturk /usr/local/lucida-clinc/mturk
+ ---> Using cache
+ ---> 0f19cb0a3609
+Step 19/27 : COPY scripts /usr/local/lucida-clinc/scripts
+ ---> 50d2247ef860
+Removing intermediate container 1d3dcf42ec06
+Step 20/27 : COPY storage /usr/local/lucida-clinc/storage
+ ---> cf70ce7c7e25
+Removing intermediate container 23b56c2ca995
+Step 21/27 : COPY tests /usr/local/lucida-clinc/tests
+ ---> 2373b3ccbdaa
+Removing intermediate container b8df27661d32
+Step 22/27 : COPY uservices /usr/local/lucida-clinc/uservices
+ ---> ff03ed92a718
+Removing intermediate container e7730aad0664
+Step 23/27 : COPY utils /usr/local/lucida-clinc/utils
+ ---> abd377a4bb56
+Removing intermediate container 0d2d5026dddd
+Step 24/27 : COPY bankutils /usr/local/lucida-clinc/bankutils
+ ---> 759d706ab54d
+Removing intermediate container 2cca9a68f6dd
+Step 25/27 : COPY clincapi /usr/local/lucida-clinc/clincapi
+ ---> eb24204354ea
+Removing intermediate container 3e10ffaf9379
+Step 26/27 : COPY web /usr/local/lucida-clinc/web
+ ---> 92dafea0f3b8
+Removing intermediate container 8656637b3ead
+Step 27/27 : RUN /usr/bin/make all
+ ---> Running in 949e3b5fa177
+/usr/bin/make -C ./web/demos/bankcoach/html all; /usr/bin/make -C ./clincapi/finie/stateful_classifier all; /usr/bin/make -C ./uservices/aiinfer all; /usr/bin/make -C ./aiutils/namedentityrecognizer all; /usr/bin/make -C ./aiutils/slotvaluepairer all; /usr/bin/make -C ./aiutils/queryclassifier all; /usr/bin/make -C ./aiutils/queryclassifier/statefulclassifier/utilities all; /usr/bin/make -C ./aiutils/queryclassifier/testcase all;
+make[1]: Entering directory `/usr/local/lucida-clinc/web/demos/bankcoach/html'
+sass --update scss:css
+make[1]: Leaving directory `/usr/local/lucida-clinc/web/demos/bankcoach/html'
+make[1]: Entering directory `/usr/local/lucida-clinc/clincapi/finie/stateful_classifier'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/clincapi/finie/stateful_classifier'
+make[1]: Entering directory `/usr/local/lucida-clinc/uservices/aiinfer'
+thrift -r --gen py -I "/usr/local/lucida-clinc" -o "../.." aiinfer.thrift
+make[1]: Leaving directory `/usr/local/lucida-clinc/uservices/aiinfer'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/namedentityrecognizer'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/namedentityrecognizer'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/slotvaluepairer'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/slotvaluepairer'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/queryclassifier'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/queryclassifier'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/queryclassifier/statefulclassifier/utilities'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/queryclassifier/statefulclassifier/utilities'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/queryclassifier/testcase'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/queryclassifier/testcase'
+ ---> a56a545a36bd
+Removing intermediate container 949e3b5fa177
+Successfully built a56a545a36bd
+062218113424724597237: Pulling from elasticsearch-base
+Digest: sha256:6f4c4507eb6e9e1d598db963b0f200d660c7de405f19151c28fed8967d1cfc97
+Status: Image is up to date for cdn.clinc.ai:5000/elasticsearch-base:062218113424724597237
+Sending build context to Docker daemon 32.77 kB
+Step 1/6 : FROM cdn.clinc.ai:5000/elasticsearch-base:062218113424724597237
+ ---> b1e99d7789bc
+Step 2/6 : EXPOSE 9200 9300
+ ---> Using cache
+ ---> 9269401156e8
+Step 3/6 : COPY start-elasticsearch.sh /usr/local/bin/start-elasticsearch.sh
+ ---> Using cache
+ ---> 35636fb0ed98
+Step 4/6 : RUN chmod +x /usr/local/bin/start-elasticsearch.sh
+ ---> Using cache
+ ---> 6a48a13a4ab7
+Step 5/6 : CMD /usr/local/bin/start-elasticsearch.sh
+ ---> Using cache
+ ---> aeaa0b90e6fe
+Step 6/6 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> 001990d2456b
+Successfully built 001990d2456b
+062218113424724597237: Pulling from nginx-base
+Digest: sha256:550c4242c58363e39c56666bf5193666d85c18b9c411591e0145b6af0eb5a8b1
+Status: Image is up to date for cdn.clinc.ai:5000/nginx-base:062218113424724597237
+Sending build context to Docker daemon 9.728 kB
+Step 1/3 : FROM cdn.clinc.ai:5000/nginx-base:062218113424724597237
+ ---> 17daebd00e2c
+Step 2/3 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> f5424b6834ab
+Step 3/3 : ARG CLINC_PATH
+ ---> Using cache
+ ---> f653e8993e08
+Successfully built f653e8993e08
+062218113424724597237: Pulling from business-logic-base
+Digest: sha256:a89c4aa6ed13067463a3bc3e13f50437bd54fbcdd42bba4e8e9d051a06d6bf53
+Status: Image is up to date for cdn.clinc.ai:5000/business-logic-base:062218113424724597237
+Sending build context to Docker daemon 24.58 kB
+Step 1/9 : FROM cdn.clinc.ai:5000/business-logic-base:062218113424724597237
+ ---> 5a7d0660d94a
+Step 2/9 : ENV PYTHONUNBUFFERED 1
+ ---> Using cache
+ ---> 7cb7194f1a2d
+Step 3/9 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> c9e48a1d31ba
+Step 4/9 : ENV LUCIDA_HOSTNAME $LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> e232424d3729
+Step 5/9 : RUN mkdir /code
+ ---> Using cache
+ ---> ca88acbd7ebd
+Step 6/9 : WORKDIR /code
+ ---> Using cache
+ ---> 594a46aae219
+Step 7/9 : ADD requirements.txt /code/
+ ---> Using cache
+ ---> fa4aa745525b
+Step 8/9 : RUN pip install -r requirements.txt
+ ---> Using cache
+ ---> 110b8a9fbafe
+Step 9/9 : ADD . /code/
+ ---> Using cache
+ ---> 66d1a059c202
+Successfully built 66d1a059c202
+062218113424724597237: Pulling from corenlp-base
+Digest: sha256:1353efe33418fedb1b0f58dcc7d3e533bfba261b147918ff1190c93e10f55c89
+Status: Image is up to date for cdn.clinc.ai:5000/corenlp-base:062218113424724597237
+Sending build context to Docker daemon  5.12 kB
+Step 1/4 : FROM cdn.clinc.ai:5000/corenlp-base:062218113424724597237
+ ---> 656578d1b6fd
+Step 2/4 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> 3a7c59bf4543
+Step 3/4 : ADD Makefile .
+ ---> Using cache
+ ---> f8c7e2c110a8
+Step 4/4 : EXPOSE 25900
+ ---> Using cache
+ ---> 834151747118
+Successfully built 834151747118
+062218113424724597237: Pulling from mysql-base
+Digest: sha256:5e2ec5964847dd78c83410f228325a462a3bfd796b6133b2bdd590b71721fea6
+Status: Image is up to date for cdn.clinc.ai:5000/mysql-base:062218113424724597237
+Sending build context to Docker daemon 6.144 kB
+Step 1/4 : FROM cdn.clinc.ai:5000/mysql-base:062218113424724597237
+ ---> 7666f75adb6b
+Step 2/4 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> d75940ccd158
+Step 3/4 : ADD clincdev.sql /docker-entrypoint-initdb.d/
+ ---> Using cache
+ ---> e624ce50655f
+Step 4/4 : ADD my.cnf /etc/mysql/
+ ---> Using cache
+ ---> c036541a8f98
+Successfully built c036541a8f98
+062218113424724597237: Pulling from web-base
+Digest: sha256:1ddb7f25138202f957b76540c0ce5bce850f6215d8d7b18e4163a0be429db12f
+Status: Image is up to date for cdn.clinc.ai:5000/web-base:062218113424724597237
+Sending build context to Docker daemon 218.8 MB
+Step 1/51 : FROM cdn.clinc.ai:5000/web-base:062218113424724597237
+ ---> 0543d1176899
+Step 2/51 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> 832c4a13c79c
+Step 3/51 : ENV LUCIDA_HOSTNAME $LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> 17227e011d91
+Step 4/51 : RUN pip install elasticsearch
+ ---> Using cache
+ ---> 7451a52aecd7
+Step 5/51 : RUN pip install django-test-without-migrations==0.6
+ ---> Using cache
+ ---> 179cd1a85a65
+Step 6/51 : RUN pip install wdb==3.2.1
+ ---> Using cache
+ ---> 611ff1d194ff
+Step 7/51 : RUN sed -i 's/.*atomic.*//'     /usr/local/lib/python2.7/site-packages/background_task/tasks.py
+ ---> Using cache
+ ---> 7fa8ec0f566b
+Step 8/51 : RUN gem install --no-ri --no-rdoc bundler
+ ---> Using cache
+ ---> cc0a4960bc38
+Step 9/51 : COPY web/finiedocs/Gemfile /
+ ---> Using cache
+ ---> b1cfefcb677c
+Step 10/51 : COPY web/finiedocs/Gemfile.lock /
+ ---> Using cache
+ ---> 2a275a254f8e
+Step 11/51 : ENV BUNDLE_GEM_FILE /Gemfile BUNDLE_PATH /bundle
+ ---> Using cache
+ ---> 1cbc272a01d4
+Step 12/51 : RUN bundle install
+ ---> Using cache
+ ---> 2a5fd8250cc9
+Step 13/51 : RUN mkdir -p /usr/local/lucida-clinc
+ ---> Using cache
+ ---> 571795913711
+Step 14/51 : ENV CLINC_PATH /usr/local/lucida-clinc
+ ---> Using cache
+ ---> 7fb8afa10040
+Step 15/51 : ENV PYTHONPATH $PYTHONPATH:$CLINC_PATH:$CLINC_PATH/uservices:$CLINC_PATH/gen-py
+ ---> Using cache
+ ---> a90d1b06193c
+Step 16/51 : ENV PYTHONUNBUFFERED 1
+ ---> Using cache
+ ---> 75703e1b3747
+Step 17/51 : RUN /usr/share/locales/install-language-pack en_ZA.UTF-8
+ ---> Using cache
+ ---> cbc3b4053ace
+Step 18/51 : RUN /usr/share/locales/install-language-pack de_DE.UTF-8
+ ---> Using cache
+ ---> 68a4fd313272
+Step 19/51 : RUN /usr/share/locales/install-language-pack en_GB.UTF-8
+ ---> Using cache
+ ---> f6a550df9914
+Step 20/51 : RUN /usr/share/locales/install-language-pack en_US.UTF-8
+ ---> Using cache
+ ---> 8d8a1c50250c
+Step 21/51 : RUN dpkg-reconfigure locales
+ ---> Using cache
+ ---> db0898835fb0
+Step 22/51 : COPY web/conf/clincweb.conf /etc/apache2/sites-available/
+ ---> Using cache
+ ---> 8f50417919e5
+Step 23/51 : ENV DJANGO_SETTINGS_MODULE clincapi.common.settings
+ ---> Using cache
+ ---> d0d2efb94b66
+Step 24/51 : ENV CLINC_LOG_PATH /var/log/lucida
+ ---> Using cache
+ ---> 7c99e2c218c9
+Step 25/51 : RUN mkdir -p /var/log/lucida/files/asr
+ ---> Using cache
+ ---> 0b4b1363c56c
+Step 26/51 : RUN a2enmod ssl &&     a2enmod rewrite &&     a2enmod proxy &&     a2enmod proxy_http &&     a2enmod headers
+ ---> Using cache
+ ---> c8ea690eb19b
+Step 27/51 : RUN a2dissite 000-default.conf
+ ---> Using cache
+ ---> 55058c7069ae
+Step 28/51 : RUN a2ensite clincweb.conf
+ ---> Using cache
+ ---> 4d9c395e352c
+Step 29/51 : RUN mkdir -p /usr/local/lucida-clinc/web
+ ---> Using cache
+ ---> 390dad8b5c3e
+Step 30/51 : WORKDIR /usr/local/lucida-clinc/web
+ ---> Using cache
+ ---> 1b8ed2467fb8
+Step 31/51 : COPY web/finiedocs /usr/local/lucida-clinc/web/finiedocs
+ ---> Using cache
+ ---> 0e982352ce15
+Step 32/51 : RUN cd finiedocs/ && bundle exec middleman build --clean
+ ---> Using cache
+ ---> 8979f75ad821
+Step 33/51 : COPY external /usr/local/lucida-clinc/external
+ ---> Using cache
+ ---> e3ffb5231029
+Step 34/51 : COPY aiutils /usr/local/lucida-clinc/aiutils
+ ---> Using cache
+ ---> ed07f32aed5e
+Step 35/51 : COPY Makefile Makefile.common .docker-base-version.txt .theanorc .lucida-version.txt .jshintrc .eslintrc.json .coveragerc .pylintrc /usr/local/lucida-clinc/
+ ---> Using cache
+ ---> 58d98495d88f
+Step 36/51 : COPY commons /usr/local/lucida-clinc/commons
+ ---> Using cache
+ ---> 147268b63065
+Step 37/51 : COPY drm /usr/local/lucida-clinc/drm
+ ---> Using cache
+ ---> 398f6e500e50
+Step 38/51 : COPY mturk /usr/local/lucida-clinc/mturk
+ ---> Using cache
+ ---> 6f8bb24afbb8
+Step 39/51 : COPY scripts /usr/local/lucida-clinc/scripts
+ ---> d82924a053c9
+Removing intermediate container eb8c92c9cc71
+Step 40/51 : COPY storage /usr/local/lucida-clinc/storage
+ ---> ef1bdfb8983b
+Removing intermediate container f8e1690e7329
+Step 41/51 : COPY tests /usr/local/lucida-clinc/tests
+ ---> 177a6e866c95
+Removing intermediate container 02d1c4867c8a
+Step 42/51 : COPY uservices /usr/local/lucida-clinc/uservices
+ ---> 2991e60f8244
+Removing intermediate container e801e8413784
+Step 43/51 : COPY utils /usr/local/lucida-clinc/utils
+ ---> e8f93cb65242
+Removing intermediate container a6bedcd22c22
+Step 44/51 : COPY bankutils /usr/local/lucida-clinc/bankutils
+ ---> cbe179265382
+Removing intermediate container c63f9d0373e1
+Step 45/51 : COPY clincapi /usr/local/lucida-clinc/clincapi
+ ---> dd23f3f5e96b
+Removing intermediate container 288177276a0b
+Step 46/51 : COPY web /usr/local/lucida-clinc/web
+ ---> 3a232493c25e
+Removing intermediate container 364b4a46dfbd
+Step 47/51 : WORKDIR /usr/local/lucida-clinc/web/adminconsole
+ ---> 7611365c12bf
+Removing intermediate container 73e57f7415ec
+Step 48/51 : RUN npm install
+ ---> Running in 7899d36aba96
+[91m(node:6) fs: re-evaluating native module sources is not supported. If you are using the graceful-fs module, please update it to a more recent version.
+[0m[91mnpm[0m[91m [0m[91mWARN package.json clinc-spotlight@1.0.0 No repository field.
+[0m[91mnpm WARN package.json Dependency 'nodemon' exists in both dependencies and devDependencies, using 'nodemon@^1.11.0' from dependencies
+[0mmarked@0.3.19 node_modules/marked
+ ---> 0c6d40fb4a40
+Removing intermediate container 7899d36aba96
+Step 49/51 : WORKDIR /usr/local/lucida-clinc/web
+ ---> 41dc6b71198c
+Removing intermediate container 3136ad3481ab
+Step 50/51 : RUN /usr/bin/make -C /usr/local/lucida-clinc all
+ ---> Running in 9e6b7d033ef4
+make: Entering directory `/usr/local/lucida-clinc'
+/usr/bin/make -C ./web/demos/bankcoach/html all; /usr/bin/make -C ./clincapi/finie/stateful_classifier all; /usr/bin/make -C ./uservices/aiinfer all; /usr/bin/make -C ./aiutils/namedentityrecognizer all; /usr/bin/make -C ./aiutils/slotvaluepairer all; /usr/bin/make -C ./aiutils/queryclassifier all; /usr/bin/make -C ./aiutils/queryclassifier/statefulclassifier/utilities all; /usr/bin/make -C ./aiutils/queryclassifier/testcase all;
+make[1]: Entering directory `/usr/local/lucida-clinc/web/demos/bankcoach/html'
+sass --update scss:css
+make[1]: Leaving directory `/usr/local/lucida-clinc/web/demos/bankcoach/html'
+make[1]: Entering directory `/usr/local/lucida-clinc/clincapi/finie/stateful_classifier'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/clincapi/finie/stateful_classifier'
+make[1]: Entering directory `/usr/local/lucida-clinc/uservices/aiinfer'
+thrift -r --gen py -I "/usr/local/lucida-clinc" -o "../.." aiinfer.thrift
+make[1]: Leaving directory `/usr/local/lucida-clinc/uservices/aiinfer'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/namedentityrecognizer'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/namedentityrecognizer'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/slotvaluepairer'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/slotvaluepairer'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/queryclassifier'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/queryclassifier'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/queryclassifier/statefulclassifier/utilities'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/queryclassifier/statefulclassifier/utilities'
+make[1]: Entering directory `/usr/local/lucida-clinc/aiutils/queryclassifier/testcase'
+make[1]: `all' is up to date.
+make[1]: Leaving directory `/usr/local/lucida-clinc/aiutils/queryclassifier/testcase'
+make: Leaving directory `/usr/local/lucida-clinc'
+ ---> 03f776a01d76
+Removing intermediate container 9e6b7d033ef4
+Step 51/51 : RUN mv /usr/local/lucida-clinc/clincapi/finie/email/password_reset_email.html /usr/local/lib/python2.7/site-packages/django/contrib/admin/templates/registration/password_reset_email.html  && mv /usr/local/lucida-clinc/clincapi/finie/email/email_confirmation_message.txt /usr/local/lib/python2.7/site-packages/allauth/templates/account/email/email_confirmation_message.txt  && mv /usr/local/lucida-clinc/clincapi/finie/email/adapter.py /usr/local/lib/python2.7/site-packages/allauth/account/adapter.py  && mv /usr/local/lucida-clinc/clincapi/finie/email/forms.py /usr/local/lib/python2.7/site-packages/django/contrib/auth/forms.py
+ ---> Running in 045d8b00b3bb
+ ---> b09b7318e1c4
+Removing intermediate container 045d8b00b3bb
+Successfully built b09b7318e1c4
+062218113424724597237: Pulling from memcache-base
+Digest: sha256:36b02ed379a0f7b4c69cc57fce70d35d972ae3f25dfe21ae7fb6567cd5533456
+Status: Image is up to date for cdn.clinc.ai:5000/memcache-base:062218113424724597237
+Sending build context to Docker daemon 4.096 kB
+Step 1/2 : FROM cdn.clinc.ai:5000/memcache-base:062218113424724597237
+ ---> bb1778ef7d3a
+Step 2/2 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> cab0cb6061be
+Successfully built cab0cb6061be
+./scripts/build_one_docker.sh ./tests/Dockerfile .
+062218113424724597237: Pulling from tests-base
+Digest: sha256:e5cc87e102a74bcc29ce184f539ba9c3f3b55168dd9064417b6cb81a27047f4b
+Status: Image is up to date for cdn.clinc.ai:5000/tests-base:062218113424724597237
+Sending build context to Docker daemon 219.6 MB
+Step 1/8 : FROM cdn.clinc.ai:5000/tests-base:062218113424724597237
+ ---> b98d9be740b5
+Step 2/8 : ARG LUCIDA_HOSTNAME
+ ---> Using cache
+ ---> ead5cd1a6902
+Step 3/8 : ENV PYTHONUNBUFFERED 1
+ ---> Using cache
+ ---> 4bde49e59993
+Step 4/8 : RUN mkdir -p /usr/local/lucida-clinc/web/adminconsole/src
+ ---> Using cache
+ ---> 0192157f3be8
+Step 5/8 : COPY web/adminconsole /usr/local/lucida-clinc/web/adminconsole
+ ---> Using cache
+ ---> 7bca56f9e70e
+Step 6/8 : RUN cd /usr/local/lucida-clinc/web/adminconsole/src && npm install
+ ---> Using cache
+ ---> 6a0f1ca99dda
+Step 7/8 : COPY . /usr/local/lucida-clinc
+ ---> 2b3ffbcc51f7
+Removing intermediate container 7bcb861153da
+Step 8/8 : WORKDIR /usr/local/lucida-clinc
+ ---> 2b1888ef5343
+Removing intermediate container 26c8ef882a2a
+Successfully built 2b1888ef5343
+docker run --rm  -e FULL_STACK_TEST -e HIT_API_TEST -v /var/run/docker.sock:/var/run/docker.sock tests ./tests/test.sh migrations
+Creating lucidaclinc_corenlp-server_1
+Creating lucidaclinc_mysql-server_1
+Creating lucidaclinc_memcached-server_1
+Creating lucidaclinc_elasticsearch-server_1
+Creating lucidaclinc_aiinfer-server_1
+Creating lucidaclinc_logstash-server_1
++ REPO_PATH=/usr/local/lucida-clinc
++++ readlink -f ./scripts/static_web_setup.sh
+++ dirname /usr/local/lucida-clinc/scripts/static_web_setup.sh
++ SCRIPTS_DIR=/usr/local/lucida-clinc/scripts
++ MANAGE_FILE=/usr/local/lucida-clinc/clincapi/manage.py
+Creating Apache logging file
++ echo 'Creating Apache logging file'
++ LOGGER_PATHS=("/var/log/apache2/" "/var/log/lucida/files/")
++ LOGGER_PERMISSIONS=777
++ LOGS=("prefetcher.log" "logger.log" "aiinfer.log")
++ for logger_path in '"${LOGGER_PATHS[@]}"'
++ for log in '"${LOGS[@]}"'
++ touch /var/log/apache2//prefetcher.log
++ chmod 777 /var/log/apache2//prefetcher.log
++ for log in '"${LOGS[@]}"'
++ touch /var/log/apache2//logger.log
++ chmod 777 /var/log/apache2//logger.log
++ for log in '"${LOGS[@]}"'
++ touch /var/log/apache2//aiinfer.log
++ chmod 777 /var/log/apache2//aiinfer.log
++ for logger_path in '"${LOGGER_PATHS[@]}"'
++ for log in '"${LOGS[@]}"'
++ touch /var/log/lucida/files//prefetcher.log
++ chmod 777 /var/log/lucida/files//prefetcher.log
++ for log in '"${LOGS[@]}"'
++ touch /var/log/lucida/files//logger.log
++ chmod 777 /var/log/lucida/files//logger.log
++ for log in '"${LOGS[@]}"'
++ touch /var/log/lucida/files//aiinfer.log
++ chmod 777 /var/log/lucida/files//aiinfer.log
++ echo 'Creating Theano compiler directory'
++ mkdir -p /var/www/.theano
+Creating Theano compiler directory
+Making MySQL directory
++ chmod -R 777 /var/www/.theano
++ chown -R :www-data /var/www/.theano
++ echo 'Making MySQL directory'
++ DB_DIR=/var/lib/mysql
++ DB_WAIT=10
++ mkdir -p /var/lib/mysql
+Waiting for MySQL
++ echo 'Waiting for MySQL'
++ mysql --user=clincdev --password=yesiamtherealclincdev --host=mysql-server --port=3306 '--execute=;'
++ [[ x1 != \x\1 ]]
++ echo 'Dropping MySQL test_* databases'
+++ mysql --user=clincdev --password=yesiamtherealclincdev --host=mysql-server --port=3306 '--execute=SELECT CONCAT('\''DROP DATABASE '\'',schema_name,'\'';'\'') AS '\'''\'' FROM information_schema.schemata WHERE schema_name LIKE '\''test_%'\'';'
++ DROP_SCRIPT=
++ echo
++ mysql --user=clincdev --password=yesiamtherealclincdev --host=mysql-server --port=3306 --execute=
+Dropping MySQL test_* databases
+
+Copy model and data files and create manifest files
++ echo 'Copy model and data files and create manifest files'
++ python /usr/local/lucida-clinc/scripts/init_manifest.py
+/usr/local/lib/python2.7/site-packages/nltk/twitter/__init__.py:20: UserWarning: The twython library has not been installed. Some functionality from the twitter package will not be available.
+  warnings.warn("The twython library has not been installed. "
+Waiting for aiinfer
++ [[ 0 -eq 1 ]]
++ echo 'Waiting for aiinfer'
++ /usr/local/lucida-clinc/scripts/wait_for_aiinfer.sh
+aiinfer-server not ready. Waiting for  5 seconds (5/600)
+aiinfer-server not ready. Waiting for  5 seconds (10/600)
+aiiinfer-server is running after 10 seconds!
+scripts/run_migrations.sh 
++ REPO_PATH=/usr/local/lucida-clinc
++ MANAGE_FILE=/usr/local/lucida-clinc/clincapi/manage.py
++ MYAPP=finie
++ echo 'Running migrations on LCA'
++ python2 /usr/local/lucida-clinc/clincapi/manage.py makemigrations --verbosity 3
+Running migrations on LCA
+/usr/local/lib/python2.7/site-packages/nltk/twitter/__init__.py:20: UserWarning: The twython library has not been installed. Some functionality from the twitter package will not be available.
+  warnings.warn("The twython library has not been installed. "
+/usr/local/lib/python2.7/site-packages/fuzzywuzzy/fuzz.py:35: UserWarning: Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning
+  warnings.warn('Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning')
+2018-06-22 16:19:30,369 Loading company trie for mode "None"
+2018-06-22 16:19:31,811 Loading visgen for version 776b3f6f-eb44-4ba1-ac85-00f6f976a99a
+Traceback (most recent call last):
+  File "/usr/local/lucida-clinc/clincapi/manage.py", line 31, in <module>
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python2.7/site-packages/django/core/management/__init__.py", line 364, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python2.7/site-packages/django/core/management/__init__.py", line 356, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/usr/local/lib/python2.7/site-packages/django/core/management/base.py", line 283, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/usr/local/lib/python2.7/site-packages/django/core/management/base.py", line 327, in execute
+    self.check()
+  File "/usr/local/lib/python2.7/site-packages/django/core/management/base.py", line 359, in check
+    include_deployment_checks=include_deployment_checks,
+  File "/usr/local/lib/python2.7/site-packages/django/core/management/base.py", line 346, in _run_checks
+    return checks.run_checks(**kwargs)
+  File "/usr/local/lib/python2.7/site-packages/django/core/checks/registry.py", line 81, in run_checks
+    new_errors = check(app_configs=app_configs)
+  File "/usr/local/lib/python2.7/site-packages/django/core/checks/urls.py", line 16, in check_url_config
+    return check_resolver(resolver)
+  File "/usr/local/lib/python2.7/site-packages/django/core/checks/urls.py", line 26, in check_resolver
+    return check_method()
+  File "/usr/local/lib/python2.7/site-packages/django/urls/resolvers.py", line 254, in check
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/site-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/site-packages/django/urls/resolvers.py", line 405, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/site-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python2.7/site-packages/django/urls/resolvers.py", line 398, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/local/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/usr/local/lucida-clinc/clincapi/common/urls.py", line 31, in <module>
+    url(r'^v1/', include('clincapi.finie.urls'))
+  File "/usr/local/lib/python2.7/site-packages/django/conf/urls/__init__.py", line 50, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/local/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/usr/local/lucida-clinc/clincapi/finie/urls.py", line 19, in <module>
+    from clincapi.finie.views import (
+  File "/usr/local/lucida-clinc/clincapi/finie/views.py", line 61, in <module>
+    OBSERVABLES = Observables()
+  File "/usr/local/lucida-clinc/bankutils/observables/observables.py", line 71, in __init__
+    self.clf_manager = ClassifierEngineManager()
+  File "/usr/local/lucida-clinc/aiutils/enginemanager/AIEngineManager.py", line 180, in __init__
+    super(ClassifierEngineManager, self).__init__()
+  File "/usr/local/lucida-clinc/aiutils/enginemanager/AIEngineManager.py", line 30, in __init__
+    self._init_models()
+  File "/usr/local/lucida-clinc/aiutils/enginemanager/AIEngineManager.py", line 192, in _init_models
+    for ai_version in deployed_ai_versions:
+  File "/usr/local/lib/python2.7/site-packages/django/db/models/query.py", line 250, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python2.7/site-packages/django/db/models/query.py", line 1118, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python2.7/site-packages/django/db/models/query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch)
+  File "/usr/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 899, in execute_sql
+    raise original_exception
+django.db.utils.ProgrammingError: (1146, "Table 'finie_db.FinieAIVersion' doesn't exist")
+make: *** [Makefile:91: test-migrations] Error 1
+Stopping lucidaclinc_logstash-server_1 ... 
+Stopping lucidaclinc_elasticsearch-server_1 ... 
+Stopping lucidaclinc_aiinfer-server_1 ... 
+Stopping lucidaclinc_memcached-server_1 ... 
+Stopping lucidaclinc_mysql-server_1 ... 
+Stopping lucidaclinc_corenlp-server_1 ... 
+[3A[2KStopping lucidaclinc_memcached-server_1 ... done[3B[2A[2KStopping lucidaclinc_mysql-server_1 ... done[2B[1A[2KStopping lucidaclinc_corenlp-server_1 ... done[1B[4A[2KStopping lucidaclinc_aiinfer-server_1 ... done[4B[6A[2KStopping lucidaclinc_logstash-server_1 ... done[6B[5A[2KStopping lucidaclinc_elasticsearch-server_1 ... done[5BRemoving lucidaclinc_logstash-server_1 ... 
+Removing lucidaclinc_elasticsearch-server_1 ... 
+Removing lucidaclinc_aiinfer-server_1 ... 
+Removing lucidaclinc_memcached-server_1 ... 
+Removing lucidaclinc_mysql-server_1 ... 
+Removing lucidaclinc_corenlp-server_1 ... 
+[1A[2KRemoving lucidaclinc_corenlp-server_1 ... done[1B[4A[2KRemoving lucidaclinc_aiinfer-server_1 ... done[4B[3A[2KRemoving lucidaclinc_memcached-server_1 ... done[3B[6A[2KRemoving lucidaclinc_logstash-server_1 ... done[6B[2A[2KRemoving lucidaclinc_mysql-server_1 ... done[2B[5A[2KRemoving lucidaclinc_elasticsearch-server_1 ... done[5BMakefile:198: recipe for target 'dtest-migrations' failed
+make: *** [dtest-migrations] Error 2
+[32;1mRunning after script...[0;m
+[32;1m$ docker rmi $(docker images --quiet --filter "dangling=true") &> /dev/null || true[0;m
+[32;1m$ docker volume rm $(docker volume ls --quiet -f dangling=true) &> /dev/null[0;m
+[31;1mERROR: Job failed: exit status 1
+[0;m

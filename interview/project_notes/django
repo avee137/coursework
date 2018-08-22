@@ -1,0 +1,8 @@
+1. how does django unittest work ?
+2. how is migrations tested in CI 
+
+
+
+./manage.py migrate my_app 0010_previous_migration 
+
+python manage.py makemigrations finie --empty

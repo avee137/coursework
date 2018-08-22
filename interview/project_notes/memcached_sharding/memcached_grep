@@ -1,0 +1,86 @@
+aiutils/queryclassifier/init_KB/raw/obsolete/benchmark-outofscope.json:34:    "Treadmill is an open-source modular load testing platform for characeterizing server-side applications (e.g., Memcached, Mcrouter, and FBThrift.": "outofscope",
+aiutils/queryclassifier/init_KB/raw/obsolete/benchmark-outofscope.json:36:    "Once you have installed Treadmill, you can run the corresponding binary. For example, you can test against a Memcached instance on 127.0.0.1:11211 by": "outofscope",
+aiutils/dialogsystem/DialogCache.py:5:from storage.memcached.MCCache import Cache
+aiutils/dialogsystem/DialogCache.py:9:    The DialogCache class stores the conversation state in a memcached server
+aiutils/dialogsystem/DialogSystem.py:38:        Initializes the memcached conversation storage connection.
+bankutils/bankapi/plaid/memcache/.Dockerbase:1:FROM memcached:1.4.31
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:2:module for memcached-based transaction map
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:11:MEMCACHED_HOST = os.getenv('MEMCACHED_HOST', 'localhost')
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:12:MEMCACHED_PORT = os.getenv('MEMCACHED_PORT', 11211)
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:15:def get_all_memcached_keys(host, port):
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:17:    function to return all keys on a memcached server
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:21:    how-to-export-all-keys-and-values-from-memcached-with-python-memcache
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:48:class TxnCategorizerMemcached(TxnCategorizer):
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:50:    memcached txn map
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:55:        uses memcached for map
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:57:        self._hostname = MEMCACHED_HOST
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:58:        self._port = MEMCACHED_PORT
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:60:        self._map = Client([MEMCACHED_HOST], debug=0)
+bankutils/bankapi/txn_categorizer/txn_categorizer_memcached.py:68:        return get_all_memcached_keys(self._hostname, self._port)
+bankutils/bankapi/txn_categorizer/txn_categorizer.py:28:    memcached does not allow spaces in keys.
+bankutils/bankapi/txn_categorizer/test/mapper_bankutilstest.py:11:    txn_categorizer_factory, TXN_CAT_DICT, TXN_CAT_MEMCACHED
+bankutils/bankapi/txn_categorizer/test/mapper_bankutilstest.py:28:TXN_MAPS = [TXN_CAT_DICT, TXN_CAT_MEMCACHED]
+bankutils/bankapi/txn_categorizer/test/mapper_bankutilstest.py:40:        Flush memcached before each test
+bankutils/bankapi/txn_categorizer/test/mapper_bankutilstest.py:43:        txn_dict = txn_categorizer_factory(TXN_CAT_MEMCACHED)
+bankutils/bankapi/txn_categorizer/test/txn_categorizer_bankutilstest.py:11:    txn_categorizer_factory, TXN_CAT_DICT, TXN_CAT_MEMCACHED
+bankutils/bankapi/txn_categorizer/test/txn_categorizer_bankutilstest.py:20:TXN_CAT_MAPS = [TXN_CAT_DICT, TXN_CAT_MEMCACHED]
+bankutils/bankapi/txn_categorizer/txn_categorizer_factory.py:8:from bankutils.bankapi.txn_categorizer.txn_categorizer_memcached import (
+bankutils/bankapi/txn_categorizer/txn_categorizer_factory.py:9:    TxnCategorizerMemcached
+bankutils/bankapi/txn_categorizer/txn_categorizer_factory.py:13:TXN_CAT_MEMCACHED = 'txn_cat_memcached'
+bankutils/bankapi/txn_categorizer/txn_categorizer_factory.py:21:        TXN_CAT_MEMCACHED: TxnCategorizerMemcached
+bankutils/bankapi/txn_categorizer/README.md:5:Two classes inherit from `TxnCategorizer`: the `TxnCategorizerDict` and `TxnCategorizerMemcached` classes. The latter uses memcached as a map, while the former uses a python dict as a map. These "maps" map transaction description to transaction category. The `TxnMapper` object is a wrapper around the `TxnCategorizer` object.
+bankutils/bankapi/txn_categorizer/README.md:10:>>> txn_cat_map = txn_categorizer_factory('txn_cat_memcached')
+bankutils/bankapi/txn_categorizer/README.md:28:>>> txn_mapper = TxnMapper(txn_categorizer_factory('txn_cat_memcached'))
+bankutils/bankapi/usaa/usaa_communicator.py:15:    txn_categorizer_factory, TXN_CAT_MEMCACHED
+bankutils/bankapi/usaa/usaa_communicator.py:128:        self.txn_mapper = txn_categorizer_factory(TXN_CAT_MEMCACHED)
+bankutils/bankapi/atb/atb_communicator.py:16:    txn_categorizer_factory, TXN_CAT_MEMCACHED
+bankutils/bankapi/atb/atb_communicator.py:345:        self.txn_mapper = txn_categorizer_factory(TXN_CAT_MEMCACHED)
+bankutils/utils/money_conversion.py:10:	Get desired exchange rate from memcached server
+bankutils/utils/FXCache.py:9:from storage.memcached.MCCache import Cache
+bankutils/utils/FXCache.py:12:MEMCACHED_HOST = os.getenv('MEMCACHED_HOST', 'localhost')
+bankutils/utils/FXCache.py:41:    currency conversions in a local cache and the memcached server
+bankutils/utils/FXCache.py:72:        which is stored in memcached as True when the cache is refreshed
+compose/finie/master-slave/finie_slave.yml:24:    - MEMCACHED_HOST=${FINIE_MASTER}
+compose/finie/master-slave/finie_master.yml:26:memcached-server:
+compose/finie/master-slave/finie_master.yml:30:  command: memcached -m 6144
+docker-compose.release.yml:15:memcached-server:
+docker-compose.yml:28:    - memcached-server
+docker-compose.yml:51:    - MEMCACHED_HOST=memcached-server
+docker-compose.yml:60:    - no_proxy=${no_proxy},corenlp-server,memcached-server,mysql-server,elasticsearch-server,logstash-server,aiinfer-server,localhost
+docker-compose.yml:79:memcached-server:
+docker-compose.yml:81:  command: memcached -m 6144
+Binary file external/lrg/opt-vectors-negative300.bin matches
+README.md:103:## lucidaclinc_memcached-server_1 is up-to-date
+RELEASE.md:390: -     [improvement][inst: barclays] Avoid unneeded chattiness with memcached via local caching (!2426)
+scripts/static_web_setup.sh:104:  echo "Loading up Memcached for transaction categorizer"
+scripts/load_txn_categorizer.py:4:Simple script to load Memcached with transaction categorization data.
+scripts/load_txn_categorizer.py:9:    txn_categorizer_factory, TXN_CAT_MEMCACHED
+scripts/load_txn_categorizer.py:17:    txn_categorizer = txn_categorizer_factory(TXN_CAT_MEMCACHED)
+scripts/load_txn_categorizer.py:23:    Load a transaction category file into memcached
+storage/memcached/__init__.py:2:Module imports for storage.memcached
+storage/memcached/MCCache.py:2:A base module for storing data in memcached server
+storage/memcached/MCCache.py:11:MEMCACHED_HOST = os.getenv('MEMCACHED_HOST', 'localhost')
+storage/memcached/MCCache.py:22:    # Local cache reflects the current value in memcached.
+storage/memcached/MCCache.py:25:    # Value has changed and needs to be pushed to memcached
+storage/memcached/MCCache.py:29:    # memcached.
+storage/memcached/MCCache.py:34:    The Cache class is a generic memcached interface, used by DialogCache,
+storage/memcached/MCCache.py:50:        self.mc_cache = Client([MEMCACHED_HOST], debug=0,
+storage/memcached/MCCache.py:73:            # Update the local cache with result from memcached
+storage/memcached/MCCache.py:128:        # match the Python memcached behavior of returning None for
+storage/memcached/MCCache.py:154:        flush all update operations on the local cache to memcached.
+tests/clincapi.yml:11:memcached-server:
+tests/clincapi.yml:12:  command: 'memcached -m 2048'
+tests/spotlight.yml:13:memcached-server:
+tests/spotlight.yml:14:  command: 'memcached -m 2048'
+tests/unit.yml:11:memcached-server:
+tests/unit.yml:12:  command: 'memcached -m 2048'
+tests/ai.yml:11:memcached-server:
+tests/ai.yml:12:  command: 'memcached -m 2048'
+tests/bankutils.yml:12:memcached-server:
+tests/bankutils.yml:13:  command: 'memcached -m 2048'
+tests/coverage.yml:11:memcached-server:
+tests/coverage.yml:12:  command: 'memcached -m 2048'
+uservices/.Dockerbase:142: && pip install -U python-memcached==1.58
+uservices/Dockerfile:12:# set USE_MEMCACHED to any value to use memcached key-value store
+uservices/Dockerfile:13:ENV USE_MEMCACHED 1
+web/.Dockerbase:153: python-memcached==1.58 \

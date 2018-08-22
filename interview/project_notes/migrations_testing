@@ -1,0 +1,40 @@
+test cases:
+1. only one migration allowed
+2. should not run if no migraion file is changed
+3. run if migration file is changed
+4. correct fixtures should be applied correctly
+5. incorrect fixture should fail
+6. 
+
+
+
+ISSUES : 
+
+1. existing migrations change during run 
+
+
+ ** how do i drop the database or all the tables ?? which one of these would work ??
+ ** why are tables there on the first run and migration history of django is not populated ??
+ ** why did fixture failed with same error locally ??
+ 
+ 
+ with the news test migrations and fixtures from Eric,
+ When running the stack using docker-compose up :
+ 
+ 1. the new table is creted - 
+finie_finietest
+
+2. new fixture is implemented to it :
+mysql> select *from finie_finietest;
++----------------------------------+------+
+| id                               | name |
++----------------------------------+------+
+| 0f8ba9a3a3454d73b7ff08652d12f0d3 | eric |
++----------------------------------+------+
+1 row in set (0.00 sec)
+
+3. Upon installing 
+   >> old migrations and old fixture 
+   >> and new migrations on top of it the new migration fails.
+   >> is this the right behavior ??
+

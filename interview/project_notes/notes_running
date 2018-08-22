@@ -1,0 +1,88 @@
+0. to compile and bring up
+make docker
+sudo scripts/elk_setup.sh
+docker-compose up
+#in case of some components not coming up	
+docker-compose up --force-recreate
+
+1. sending queries
+
+curl -X POST https://api.clinc.ai/v1/oauth/ \
+    -H 'Content-Type: application/x-www-form-urlencoded' \
+    -d 'username=clincuser' \
+    -d 'password=experiencefinie' \
+    -d 'grant_type=password'
+    
+    
+curl -X POST https://api.clinc.ai/v1/query/ \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer zQXkSBjm2RuJfqLxInJNOFrJo5V5Es" \
+  -d '{
+        "query": "What is my balance",
+        "lat": 42.2730207,
+        "lon": -83.7517747,
+        "time_offset": 300,
+        "device": "default"
+      }' | python -m json.tool
+      
+
+2. trying to enable pdb and set trace in .yml
+    
+    stdin_open: true
+    tty: true
+
+3.     
+#restart docker instances
+    sudo systemctl restart docker.socket docker.service
+    docker-compose up -d --build
+    docker kill $(docker ps -q)
+    
+4. Makefile,
+  `scripts/continuous_integration/ci_filter.sh`, 
+  `tests/test.sh` and the yml files in this directory
+
+5. in case there is any connection issue with docker - > kill and bring up the shell again 
+
+**************************************************************************************************
+6. 
+some machines(locally running  in basement, not on cloud!) are configured to run gitlab-runners 
+
+running a gitlab-runner locally :
+eg.
+sudo  gitlab-runner exec shell integration
+this runs the integration pipeline from - .gitlab-ci.yml
+
+
+>> in .gitlab-ci.yml
+   
+ variables:
+    CI_JOB_TOKEN: "xsR3Wdu7ThczNh5EnfaF"
+    CLONE_SLUG: https://gitlab-ci-token:$CI_JOB_TOKEN@gitlab.clinc.ai/clinc/lucida-clinc.git   
+    
+is mandatory !!
+
+it wont run locally without this !!
+
+Why is there a check in ration/ci_filter.sh  for spotlight ??        -v, --invert-match
+              -v = Invert the sense of matching, to select non-matching lines. 
+			changed files do not contain a spotlight file, -eq 0 means grep is successful  >> hence there are modified files with spotlight pattern
+  
+	   if [ $? -ne 0 ] &&  >> means all the files are spotlight files ,as the grep option is to select non-matching lines
+       [ "$PIPELINE" != "spotlight" ]; then         
+        echo "Commit is spotlight only; skipping pipeline"
+        exit 0
+    fi
+
+If the commit is related with spotlight then there is no need to run other pipelines !!
+
+***************************************************************************************************
+
+avinash.kumar@ghats [ lucida-clinc ]$ git -c diff.renameLimit=999999 diff --name-only "$LCA_COMMIT" HEAD 
+.gitlab-ci.yml
+Makefile
+tests/migrations.yml
+
+!! CHANGES MUST BE COMMITTED EVEN WHEN THEY ARE RUN LOCALLY !!
+push to ur branch !
+  git checkout your_branch
+git push -u origin your_branch

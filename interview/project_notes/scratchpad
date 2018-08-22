@@ -1,0 +1,101 @@
+runner=c6c46711
+
+migrations : apply new migration on top of existing migrations. 
+             apply new migrations on test DB with data in it
+             
+             
+run exiting migrations and fixtures followed by ->
+run new migration              
+              
+LCA_COMMIT=$(git merge-base HEAD FETCH_HEAD) -> gives the commit id of the base from where current repo was branched out
+
+eg this commit - >  for the current branch related with migrations
+e96e0c7f454022e0766d3e74c0b91336f487dfe5
+
+how do i get a file from older version ?? 
+
+git show e96e0c7f454022e0766d3e74c0b91336f487dfe5:Makefile
+prints the version at the time of the commit !!
+
+this gives list of files in the directory 
+git show 3b3a4ca49c808bd9f19b3773efaa830918b39a0b:clincapi/finie/migrations/
+
+
+can we use 'git checkout master' to move to the base branch ?
+
+
+
+#undo git reset - 
+git reset 'HEAD@{1}' --> {1} represents reset by 1 count
+
+#large file install
+git lfs install
+
+#determine if a dir or parent is a git dir
+git rev-parse
+
+
+# supply args from stdin or from output of one cmd
+xargs
+eg. find *.json | xargs python2 /usr/local/lucida-clinc/clincapi/manage.py loaddata
+supllies the ouput of find to manage.py loaddata
+
+
+#get a particular version - 
+
+git checkout <commit> <file>
+
+example of the sequence - 
+
+1. move to a particular commit -
+ 78fef61882a576a65884239d5ef339a66df1b755 scripts/
+# everything under script is at version which was at the time of the commit !!
+
+git checkout HEAD scripts/continuous_integration/
+# everything under script is back to original !!
+
+TODO :
+1. get the LCA
+2. checkout the versions of LCA commit - migrations and fixtures
+3. apply the all migrations and all fixtures
+4. checkout to the original version
+5. apply the *new* migrations and all fixtures
+
+
+>> how to apply a particular migration using Django (skipping other migrations)-
+
+use the --fake option.
+Once you revert to 0001 you can run
+python manage.py migrate <app> 0002 --fake
+and then run
+python manage.py migrate <app> #Optionally specify 0003 explicitly
+which would apply only 0003 in this case.
+
+https://stackoverflow.com/questions/31369466/how-can-i-skip-a-migration-with-django-migrate-command
+
+ALL THE DJANGO APP SETTINGS ARE HERE- /usr/local/lucida-clinc/clincapi/common/settings - 
+base settings - common/settings/base.py
+
+
+to rollback to a particular migration !
+python2 manage.py migrate finie 0048_update_alexa_config
+
+#FINIE IS THE APP NAME
+
+
+*********************************** 
+
+test cases should be in python using django unittest format or a bash file ??
+
+
+        #- ./scripts/continuous_integration/ci_filter.sh "$CLONE_SLUG" "$CI_COMMIT_REF_NAME" migrations
+
+
+*****************
+how are docker images built, how to build selectively and restart only that ??
+is it running as a docker instance ? 
+find out place where db is pushed to a docker image 
+
+TODO:
+when running docker-compose second time, how do i pass only new migration files ?
+how do i ensure old DB is not wiped ? 

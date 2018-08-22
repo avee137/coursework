@@ -1,0 +1,65 @@
+drmtest-unit failures :
+1. the cython exceptions :
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python2.7/threading.py", line 754, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/usr/local/lib/python2.7/site-packages/websocket/_app.py", line 222, in run_forever
+    *self._get_close_args(close_frame.data if close_frame else None))
+  File "/usr/local/lib/python2.7/site-packages/websocket/_app.py", line 231, in _get_close_args
+    if not self.on_close or len(inspect.getargspec(self.on_close).args) != 3:
+  File "/usr/local/lib/python2.7/inspect.py", line 815, in getargspec
+    raise TypeError('{!r} is not a Python function'.format(func))
+TypeError: <cyfunction IBMService.__on_close at 0x7f1dea605b90> is not a Python function
+
+ok
+
+test_send_all_in_one (uservices.asr.ibm.tests.single_msg_thunderstorm_unit_test.TestSingleMessage) ... Exception in thread Thread-9:
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python2.7/threading.py", line 754, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/usr/local/lib/python2.7/site-packages/websocket/_app.py", line 222, in run_forever
+    *self._get_close_args(close_frame.data if close_frame else None))
+  File "/usr/local/lib/python2.7/site-packages/websocket/_app.py", line 231, in _get_close_args
+    if not self.on_close or len(inspect.getargspec(self.on_close).args) != 3:
+  File "/usr/local/lib/python2.7/inspect.py", line 815, in getargspec
+    raise TypeError('{!r} is not a Python function'.format(func))
+TypeError: <cyfunction IBMService.__on_close at 0x7f1dea605b90> is not a Python function
+
+ok
+
+are these errors ?? 
+
+
+
+2. RCA for these ..
+
+
+======================================================================
+ERROR: test_data_matches_json (aiutils.slotvaluepairer.barclays_data_consistency_test.TestDataConsistency)
+assert .data matches .json
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/local/lucida-clinc/aiutils/slotvaluepairer/barclays_data_consistency_test.py", line 47, in test_data_matches_json
+    test_file.name
+  File "/usr/local/lib/python2.7/subprocess.py", line 168, in call
+    return Popen(*popenargs, **kwargs).wait()
+  File "/usr/local/lib/python2.7/subprocess.py", line 390, in __init__
+    errread, errwrite)
+  File "/usr/local/lib/python2.7/subprocess.py", line 1024, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
+
+======================================================================
+FAIL: test_json (bankutils.observables.utilities.stock.stock_utils_test.StockUtilsTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "utils/clinc/json_tester.py", line 54, in utils.clinc.json_tester.JsonTest.test_json (utils/clinc/json_tester.c:1459)
+AssertionError
+
+----------------------------------------------------------------------
+Ran 96 tests in 245.018s

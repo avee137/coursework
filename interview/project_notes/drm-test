@@ -1,0 +1,61 @@
+drm-test error ->
+
+
++ /usr/local/lucida-clinc/scripts/wait_for_embedder.sh
+phraseembedder is running after 0 seconds!
+python clincapi/manage.py test --nomigrations --verbosity=3 --pattern="*_test.py"
+Traceback (most recent call last):
+  File "clincapi/manage.py", line 31, in <module>
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python2.7/site-packages/django/core/management/__init__.py", line 364, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python2.7/site-packages/django/core/management/__init__.py", line 308, in execute
+    settings.INSTALLED_APPS
+  File "/usr/local/lib/python2.7/site-packages/django/conf/__init__.py", line 56, in __getattr__
+    self._setup(name)
+  File "/usr/local/lib/python2.7/site-packages/django/conf/__init__.py", line 41, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/usr/local/lib/python2.7/site-packages/django/conf/__init__.py", line 110, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/usr/local/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/usr/local/lucida-clinc/clincapi/common/settings/__init__.py", line 17, in <module>
+    _DEPLOYMENT_ENVIRONMENT_).__dict__)
+  File "/usr/local/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "clincapi/common/settings/test.py", line 11, in init clincapi.common.settings.test (clincapi/common/settings/test.c:1275)
+  File "/usr/local/lucida-clinc/clincapi/common/settings/atb_test.py", line 12, in <module>
+    from .atb_common import *
+  File "clincapi/common/settings/atb_common.py", line 18, in init clincapi.common.settings.atb_common (clincapi/common/settings/atb_common.c:1372)
+  File "commons/apis/apis_raw.py", line 96, in commons.apis.apis_raw.load_apis (commons/apis/apis_raw.c:2456)
+  File "commons/apis/apis_raw.py", line 53, in commons.apis.apis_raw.ApiCredentials.load_credentials (commons/apis/apis_raw.c:1771)
+commons.apis.apis_raw.ApiCredentialsMissing: Could not load "FXAPI_KEY" credential for "FXAPI" api
+make: *** [Makefile:79: test-unit] Error 1
+Makefile:160: recipe for target 'drmtest-unit' failed
+make: *** [drmtest-unit] Error 2
+
+
+======================================================================
+ERROR: test_external_api (bankutils.utils.tests.money_conversion_bankutilstest.TestMoneyConversion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "utils/clinc/environment.py", line 79, in utils.clinc.environment.hit_api_test._call_test (utils/clinc/environment.c:2410)
+  File "/usr/local/lucida-clinc/bankutils/utils/tests/money_conversion_bankutilstest.py", line 25, in test_external_api
+    rates = cache.call_external_api(retries=0)
+  File "bankutils/utils/FXCache.py", line 101, in bankutils.utils.FXCache.FXCache.call_external_api (bankutils/utils/FXCache.c:1998)
+AttributeError: 'FXCache' object has no attribute 'url'
+
+----------------------------------------------------------------------
+Ran 188 tests in 623.209s
+
+FAILED (errors=1, skipped=3)
+Destroying test database for alias 'default' ('test_finie_db')...
+make: *** [Makefile:85: test-bankutils] Error 1
+Makefile:166: recipe for target 'drmtest-bankutils' failed
+make: *** [drmtest-bankutils] Error 2
+
+
+
+make drmtest-clincapi
+make drmtest-integration
+passes !!

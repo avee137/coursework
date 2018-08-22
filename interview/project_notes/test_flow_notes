@@ -1,0 +1,86 @@
+gitlab personal access token :
+xsR3Wdu7ThczNh5EnfaF
+
+gitlab --->	.gitlab-ci.yml ---> scripts/continuous_integration/ci_filter.sh  ----> make dtest-$PIPELINE 
+---> lucida-clinc/tests/test.sh ---> uses lucida-clinc/tests/ <>.yml file to run a docker image ----> inside the docker image run a particular test using the make file (eg make test-spotlight)
+---> executes the tests using the specified test files using (unittest, manage.py ets , check the label in makefile for details)
+
+***  tests in docker is different from  the previous run using the ( make dtest-spotlight)
+
+1. what happens in make dtest- ??
+    ## there is one entry for spotlight . 
+    ## should we add one for migrations ??
+
+ ** what is dtest, test, and drmtest ??
+    
+2. who calls ci_filter.sh ??
+
+.gitlab-ci.yml:66 - this has an entry for spotlight, there should be one for migrations .
+
+3. from where does .gitlab-ci.yml is invoked ??
+gitlab would invoke this for any CI being pushed ..
+
+
+4. test.sh is invoked from makefile using docker run
+
+5. showmigration shows many more tables than those listed in 	clincapi/finie/migrations
+   what are those, and where are they ? 
+   >> default tables created by django
+   
+6. where is models.py for each migration generated ?
+   >> its in different directories under clincapi/
+
+TODO: 
+1. check where makemigration is used in code
+>> migrations are done using  `scripts/static_web_setup.sh`
+
+2. where are models ? 
+
+ >>in different files - /lucida-clinc/clincapi/finie/models
+ >>may be in other places as well
+
+3. how are migrations generated in our code ? always auto or  can be manually written ??
+>> using models.py, not manual 
+
+25
+4. how to trigger CI build tests locally, without gitlab ?	
+
+>> make docker-test, but that would not start a runner like gitlab.
+
+>> each pipeline is a label in Makefile eg. 'make dtest-bankutils' runs pipeline 'bankutils' in the 'Test'
+
+5. how to write test cases for migration ?	 
+
+>> https://www.caktusgroup.com/blog/2016/02/02/writing-unit-tests-django-migrations
+
+6. what exactly is to be tested for any migration ?
+
+7. do we run all migrations or only selected/modified ones?
+
+8. In case any migration file is modifed, do we want to run all the tests like
+for example:
+ 	test-clincapi:
+        python clincapi/manage.py test --nomigrations --verbosity=3 --pattern="*_clincapitest.py"
+
+29
+9. how to detect if a  migration file is modified ?
+>>> similar to spotlight filter
+
+10. where to add pipeline ??   
+
+11. how to run migrations  and fixtures:
+
+Running migrations : scripts/static_web_setup.sh if we setup the appropriate flag, it should run
+
+12. are there any test cases to be written ?
+6. what exactly is to be tested for any migration ?
+
+7. do we run all migrations or only selected/modified ones?
+
+13. How to run ci build locally - 
+https://gitlab.com/gitlab-org/gitlab-runner/issues/312
+
+currently we can add image label in ci yml and start the build process but it fails 
+14. do we have custom docker image ??
+    >> where is it ? 
+    

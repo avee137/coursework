@@ -1,0 +1,13 @@
+grep -i -r "SSLCertificateFile"
+
+ssl certificate config is here -web/conf/clincweb.conf
+
+
+on the web container :
+
+root@992454976b59:/# grep -i -r "SSLCertificateFile" *
+bundle/gems/rouge-1.9.0/lib/rouge/lexers/apache/keywords.yml:  - "SSLCertificateFile"
+etc/apache2/sites-available/clincweb.conf:  SSLCertificateFile /etc/letsencrypt/live/host/cert1.pem
+etc/apache2/sites-available/default-ssl.conf:           #   SSLCertificateFile directive is needed.
+etc/apache2/sites-available/default-ssl.conf:           SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+etc/apache2/sites-available/default-ssl.conf:           #   the referenced file can be the same as SSLCertificateFile

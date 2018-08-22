@@ -1,0 +1,68 @@
+	CI_COMMIT_REF_NAME 	9.0 	all 	The branch or tag name for which project is built
+
+
+CI_JOB_TOKEN 	9.0 	1.2 	Token used for authenticating with the GitLab Container Registry. 
+								Also used to authenticate with multi-project pipelines when triggers are involved.
+
+8de9fc9cdd9d0ea04b65b87be20e591117ade10c
+[hotfix][clinc: infra] Optional Spotlight Pipeline
+
+
+docker image for clinc with all required pkgs:
+
+avinash.kumar@ghats [ lucida-clinc ]$ docker run -it --rm cdn.clinc.ai:5000/web-base:032918181234407729214 bash
+root@3818c163ec40:/usr/local/lucida-clinc/web# ls
+adminconsole  google-home
+root@3818c163ec40:/usr/local/lucida-clinc/web# 
+
+
+!! CHANGES MUST BE COMMITTED EVEN WHEN THEY ARE RUN LOCALLY !!
+push to ur branch !
+	
+git checkout your_branch
+git push -u origin your_branch
+
+example:
+#changes the last commit
+ git commit -a --amend
+# force pushes the last commit, so that remote last commit is changed !
+git push -f -u origin migration_testing_pipeline
+
+
+
+
+Squashing !!
+git rebase -i <comit_id>
+
+git rebase -i <after-this-commit>
+then - >
+https://stackoverflow.com/questions/31069316/error-with-git-rebase-could-not-apply/42084346
+
+Rebasing - 
+Updates the master / origin to current state of master/origin and puts your changes on top of it !!
+
+git checkout master
+git pull origin master
+
+git checkout RB
+git rebase master
+
+
+## undo with reflog
+$ git reflog
+$ git reset <commit_id_to_reset_to>
+
+
+##Modifying an older commit 
+
+
+1.    Use git stash to store the changes you want to add.
+2.    Use git rebase -i HEAD~10 (or whatever you need to see far enough back).
+3.    Mark the commit in question (a0865...) for edit by changing the word pick at the start of the line into edit. Don't delete the other lines as that would delete the commits. Note: ^
+4.    Save the rebase file, and git will drop back to the shell and wait for you to fix that commit.
+5.    Pop the stash by using git stash pop
+6.    Add your file with git add.
+7.    Amend the commit with git commit --amend.
+8.    Do a git rebase --continue which will rewrite the rest of your commits against the new one.
+9.    Repeat from step 2 onwards if you have marked more than one commit for edit.
+
